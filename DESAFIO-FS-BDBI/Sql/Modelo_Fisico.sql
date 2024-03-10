@@ -1,33 +1,33 @@
-/* Lógico_final: */
+/* LÃ³gico_final: */
 
 CREATE TABLE paciente (
     id INT PRIMARY KEY,
-    nome VARCHAR,
-    endereco varchar,
+    nome VARCHAR(40),
+    endereco varchar(40),
     telefone INT(11),
     data_nascimento DATE,
     _primeira_consulta DATE,
-    e_mail varchar,
+    e_mail varchar(40),
     limite_consultas_mes INT,
-    plano_saude varchar,
+    plano_saude varchar(40),
     fk_consulta_id integer
 );
 
 CREATE TABLE consulta (
     id integer PRIMARY KEY,
-    tipo_ varchar,
-    consultorio varchar,
-    paciente varchar,
+    tipo_ varchar(40),
+    consultorio varchar(40),
+    paciente varchar(40),
     data date,
-    hora varchaR
+    hora varchar(40)
 );
 
 CREATE TABLE consultorio (
     id int PRIMARY KEY,
-    localizacao_ varchar,
+    localizacao_ varchar(40),
     dias_atendimento int,
-    horario_atendimento varchar,
-    Nome_consultorio Varchar,
+    horario_atendimento varchar(40),
+    Nome_consultorio Varchar(40),
     fk_consulta_id integer
 );
  
