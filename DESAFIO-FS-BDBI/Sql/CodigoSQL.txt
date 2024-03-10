@@ -1,0 +1,78 @@
+/* Lógico_final: */
+
+CREATE TABLE paciente (
+    id INT PRIMARY KEY,
+    nome VARCHAR(40),
+    endereco varchar(40),
+    telefone INT(11),
+    data_nascimento DATE,
+    _primeira_consulta DATE,
+    e_mail varchar(40),
+    limite_consultas_mes INT,
+    plano_saude varchar(40),
+    fk_consulta_id integer
+);
+
+CREATE TABLE consulta (
+    id integer PRIMARY KEY,
+    tipo_ varchar(40),
+    consultorio varchar(40),
+    paciente varchar(40),
+    data date,
+    hora varchaR
+);
+
+CREATE TABLE consultorio (
+    id int PRIMARY KEY,
+    localizacao_ varchar(40),
+    dias_atendimento int,
+    horario_atendimento varchar(40),
+    Nome_consultorio Varchar(40),
+    fk_consulta_id integer
+);
+ 
+ALTER TABLE paciente ADD CONSTRAINT FK_paciente_2
+    FOREIGN KEY (fk_consulta_id)
+    REFERENCES consulta (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE consultorio ADD CONSTRAINT FK_consultorio_2
+    FOREIGN KEY (fk_consulta_id)
+    REFERENCES consulta (id)
+    ON DELETE RESTRICT;
+
+alter table consultorio add column doutores varchar(40)
+
+alter table paciente drop column telefone
+
+INSERT INTO paciente (id, nome, endereco, data_nascimento, _primeira_consulta, e_mail, limite_consultas_mes, plano_saude, fk_consulta_id)
+VALUES
+(1, 'Ana Silva', 'Rua das Flores, 123', '1990-01-01', '2023-11-14', 'ana.silva@email.com', 5, 'Unimed', 1),
+(2, 'João Santos', 'Avenida Brasil, 456', '1985-05-12', '2023-12-01', 'joao.santos@email.com', 4, 'Bradesco Saúde', 2),
+(3, 'Maria Oliveira', 'Rua da Paz, 789', '1995-03-25', '2024-01-05', 'maria.oliveira@email.com', 3, 'Amil', 3),
+(4, 'Pedro Souza', 'Alameda Central, 1011', '2000-07-07', '2024-02-10', 'pedro.souza@email.com', 2, 'Hapvida', 4),
+(5, 'Camila Costa', 'Travessa do Sol, 1213', '2005-11-11', '2024-03-15', 'camila.costa@email.com', 1, 'Golden Cross', 5);
+
+-- Inserindo 5 linhas na tabela consulta:
+
+INSERT INTO consulta (id, tipo_, consultorio, paciente, data, hora)
+VALUES
+(1, 'Retorno', 'Consultório 1', 'Ana Silva', '2023-11-21', '10:00'),
+(2, 'Primeira consulta', 'Consultório 2', 'João Santos', '2023-12-08', '14:00'),
+(3, 'Retorno', 'Consultório 3', 'Maria Oliveira', '2024-01-12', '16:00'),
+(4, 'Primeira consulta', 'Consultório 4', 'Pedro Souza', '2024-02-17', '09:00'),
+(5, 'Retorno', 'Consultório 5', 'Camila Costa', '2024-03-22', '11:00');
+
+-- Inserindo 5 linhas na tabela consultorio:
+
+INSERT INTO consultorio (id, localizacao_, dias_atendimento, horario_atendimento, Nome_consultorio, doutores)
+VALUES
+(1, 'Centro', 2, '08:00 às 12:00 e 14:00 às 18:00', 'Consultório Dr. Carlos','Dr. Carlos'),
+(2, 'Bairro A', 3, '09:00 às 13:00 e 15:00 às 19:00', 'Consultório Dra. Ana','Dra. Ana'),
+(3, 'Bairro B', 4, '08:00 às 12:00', 'Consultório Dr. Pedro','Dr. Pedro'),
+(4, 'Bairro C', 5, '10:00 às 14:00 e 15:00 às 19:00', 'Consultório Dra. Maria','Dra. Maria'),
+(5, 'Bairro D', 2, '09:00 às 13:00 e 14:00 às 18:00', 'Consultório Dr. João','Dr. João');
+
+select * from consulta;
+select * from consultorio;
+select * from paciente
