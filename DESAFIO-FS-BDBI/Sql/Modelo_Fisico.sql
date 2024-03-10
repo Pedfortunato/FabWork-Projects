@@ -40,3 +40,5 @@ ALTER TABLE consultorio ADD CONSTRAINT FK_consultorio_2
     FOREIGN KEY (fk_consulta_id)
     REFERENCES consulta (id)
     ON DELETE RESTRICT;
+
+alter table paciente drop column telefone
